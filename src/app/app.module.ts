@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
 import { LineaInfoComponent } from './linea-info/linea-info.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartComponent,
-    LineaInfoComponent
+    LineaInfoComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
