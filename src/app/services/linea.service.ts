@@ -12,6 +12,7 @@ import { Socket } from 'ngx-socket-io';
 
 export class LineaService {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   linea:Linea[];
 
@@ -33,5 +34,10 @@ export class LineaService {
   getLine(_id: string){
     this.socket.emit('getLine',_id);
 >>>>>>> 0d1bfe9ccdd4f088a1d74ba02c8b2b0a52881f14
+=======
+  constructor(private http: HttpClient) { }
+  getLinea(_id:string): Observable<Linea>{
+    return this.http.get<Linea>(`http://${location.hostname}:3000/lines/stations/${_id}`);
+>>>>>>> aca4d3051f04b73b613c1341f2f397b9c1106593
   }
 }
