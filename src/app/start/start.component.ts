@@ -8,7 +8,7 @@ import { LineaPortrait } from 'src/models/LineaPortrait';
 })
 export class StartComponent implements OnInit {
   lineas: LineaPortrait[] = [];
-  search_linea: string = '';
+  //search_linea: string = '';
   constructor() {
     this.lineas.push({id: 1, nombre: 'Linea 1', image: '/assets/images/linea1-500x500.png'});
     this.lineas.push({id: 2, nombre: 'Linea 2', image: '/assets/images/linea2-500x500.png'});
