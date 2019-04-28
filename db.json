@@ -1,7 +1,7 @@
 {
     "Linea":[ {
         "nombre": "linea 2",
-        "_id":"linea_2",
+        "_id":2,
         "fecha": "Fri Apr 12 2013 19:08:55 GMT-0500 (CDT)",
         "estacion": [
             {

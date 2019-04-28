@@ -20,12 +20,12 @@ export class LineaInfoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.nombre=this.activatedRouted.snapshot.paramMap.get('nombre');
+   
     this.id=this.activatedRouted.snapshot.paramMap.get('id');
 
     this.lineaService.getLinea(this.id).subscribe(res =>{
-      console.log(res[0]);
-      this.$LineaObservable = res[0];
+      this.lineaService.linea=res as Linea[];
+      console.log(this.lineaService.linea);
     })
   }
 }
