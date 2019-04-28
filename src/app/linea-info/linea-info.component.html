@@ -1,6 +1,6 @@
-<div class="container my-4">
+<div class="container my-4" *ngIf="($linea | async) as linea" >
     <div class="card">
-        <div class="card-header" ><h5>{{nombre}}
+        <div class="card-header" >{{linea.name}}<h5>
 
         </h5></div>
         <div class="card-body">
@@ -8,13 +8,9 @@
                 <li class="list-group-item" *ngFor="let estacion of linea.stations">
                     <h4>{{estacion.name}}</h4>
                     <div class="progress" style="height: 25px;">
-<<<<<<< HEAD
-                        <div class="progress-bar" [ngStyle]="{width: estacion.crowd+'%'}">%</div>
-=======
                         <div *ngIf="estacion.crowd>=0 && estacion.crowd<=33" class="progress-bar bg-success" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
                         <div *ngIf="estacion.crowd>33 && estacion.crowd<=66" class="progress-bar bg-warning" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
                         <div *ngIf="estacion.crowd>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
->>>>>>> 0126343e2eb99d461de263982bd88d0579134fd3
                     </div>
                 </li>
             </ul>

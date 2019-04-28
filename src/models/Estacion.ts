@@ -1,6 +1,7 @@
 export interface Estacion{
     _id:string;
-    nombre: string;
+    name: string;
+    crowd: number;
     personas: number;
     
 }
