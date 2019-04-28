@@ -2,23 +2,9 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12 mt-2"  *ngFor="let linea of lineas" >
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <div class="hovereffect">
-            <a [routerLink]="'/line/'+linea.id">
-=======
-<<<<<<< HEAD
-        <div class="hovereffect">
-            <a [routerLink]="'/line/'+linea.id">
-=======
-        <div class="hovereffect" *ngIf="linea.nombre == search_linea || search_linea == ''">
-            <a [routerLink]="'/line/'+linea.id+'/'+linea.nombre">
->>>>>>> 0126343e2eb99d461de263982bd88d0579134fd3
->>>>>>> 0d1bfe9ccdd4f088a1d74ba02c8b2b0a52881f14
-=======
+
         <div class="hovereffect" >
-            <a [routerLink]="'/line/'+linea.id+'/'+linea.nombre">
->>>>>>> aca4d3051f04b73b613c1341f2f397b9c1106593
+            <a [routerLink]="'/line/'+linea.id">
                 <img [src]="linea.image" alt="" class="img-fluid">
             </a>
             <div class="overlay">

@@ -15,19 +15,21 @@ export class LineaInfoComponent implements OnInit {
   $linea: Observable<any>;
   constructor(private lineaService: LineaService, private router:Router,private activatedRouted:ActivatedRoute) { }
 
-  nombre:string;
+  
   id:string;
+
+  respuesta:Linea[];
 
   ngOnInit() {
 
-    this.nombre= this.activatedRouted.snapshot.paramMap.get('nombre');
+  
     this.id= this.activatedRouted.snapshot.paramMap.get('id');
     this.$linea = this.lineaService.getLinea(this.id);
     this.$linea.subscribe(res =>{
-      console.log('dfsdf');
-      console.log(res);
+      this.respuesta=res as Linea[];
+      console.log(this.respuesta);
     })
-    console.log(this.$linea)
+    
     //console.log(this.linea);
   }
 }
