@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
 import { LineaInfoComponent } from './linea-info/linea-info.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { FormsModule } from "@angular/forms";
+import { LineaService } from './services/linea.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +18,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LineaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
