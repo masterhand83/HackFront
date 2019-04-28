@@ -9,6 +9,6 @@ import { Linea } from 'src/models/Linea';
 export class LineaService {
   constructor(private http: HttpClient) { }
   getLinea(_id:string): Observable<Linea>{
-    return this.http.get<Linea>(`http://${location.hostname}:3000/Linea?_id=${_id}`);
+    return this.http.get<Linea>(`http://${location.hostname}:3000/lines/stations/${_id}`);
   }
 }

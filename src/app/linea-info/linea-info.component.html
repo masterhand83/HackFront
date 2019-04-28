@@ -1,12 +1,16 @@
 <div class="container my-4" *ngIf="$LineaObservable as linea;">
     <div class="card">
-        <div class="card-header"><h5>{{linea.nombre}}</h5></div>
+        <div class="card-header" ><h5>{{nombre}}
+
+        </h5></div>
         <div class="card-body">
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let estacion of linea.estacion">
                     <h4>{{estacion.nombre}}</h4>
                     <div class="progress" style="height: 25px;">
-                        <div class="progress-bar" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
+                        <div *ngIf="estacion.crowd>=0 && estacion.crowd<=33" class="progress-bar bg-success" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
+                        <div *ngIf="estacion.crowd>33 && estacion.crowd<=66" class="progress-bar bg-warning" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
+                        <div *ngIf="estacion.crowd>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
                     </div>
                 </li>
             </ul>
