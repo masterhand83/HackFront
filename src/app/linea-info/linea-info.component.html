@@ -7,6 +7,7 @@
         </h5></div>
         <div class="card-body">
             <ul class="list-group">
+<<<<<<< HEAD
                 <li class="list-group-item" *ngFor="let estacion of this.lineaService.linea.stations">
                     <h4>{{estacion.name}}</h4>
                     <div class="progress" style="height: 25px;">
@@ -16,6 +17,18 @@
                         <!--div *ngIf="estacion.crowd>=0 && estacion.crowd<=33" class="progress-bar bg-success" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
                         <div *ngIf="estacion.crowd>33 && estacion.crowd<=66" class="progress-bar bg-warning" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
                         <div *ngIf="estacion.crowd>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div-->
+=======
+                <li class="list-group-item" *ngFor="let estacion of linea.stations">
+                    <h4>{{estacion.name}}</h4>
+                    <div class="progress" style="height: 25px;">
+<<<<<<< HEAD
+                        <div class="progress-bar" [ngStyle]="{width: estacion.crowd+'%'}">%</div>
+=======
+                        <div *ngIf="estacion.crowd>=0 && estacion.crowd<=33" class="progress-bar bg-success" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
+                        <div *ngIf="estacion.crowd>33 && estacion.crowd<=66" class="progress-bar bg-warning" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
+                        <div *ngIf="estacion.crowd>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
+>>>>>>> 0126343e2eb99d461de263982bd88d0579134fd3
+>>>>>>> 0d1bfe9ccdd4f088a1d74ba02c8b2b0a52881f14
                     </div>
                 </li>
             </ul>
