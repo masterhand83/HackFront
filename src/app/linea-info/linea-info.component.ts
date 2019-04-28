@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LineaService } from '../services/linea.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Estacion } from 'src/models/Estacion';
 import { Linea } from 'src/models/Linea';
+import { startWith } from "rxjs/operators";
 
 @Component({
   selector: 'app-linea-info',
@@ -10,13 +11,13 @@ import { Linea } from 'src/models/Linea';
   styleUrls: ['./linea-info.component.css']
 })
 export class LineaInfoComponent implements OnInit {
-  $LineaObservable: Linea;
+  private line: Subscription;
+  linea: Linea;
   constructor(private lineaService: LineaService) { }
 
   ngOnInit() {
-    this.lineaService.getLinea('linea_2').subscribe(res =>{
-      console.log(res[0]);
-      this.$LineaObservable = res[0];
-    })
+    this.lineaService.getLine('1');
+    this.line = this.lineaService.currentLinea.subscribe(res => this.linea = res);
+    //console.log(this.linea)
   }
 }

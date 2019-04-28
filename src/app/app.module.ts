@@ -9,6 +9,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule } from "@angular/forms";
 import { LineaService } from './services/linea.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
+const config: SocketIoConfig = {url: `http://${location.hostname}:3000`, options: {}};
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [LineaService],
   bootstrap: [AppComponent]
