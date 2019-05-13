@@ -1,5 +1,7 @@
+import { Crowd } from './Crowd';
+
 export interface Estacion{
-    _id:string;
-    name: string;
-    info:Object[]; 
+    way:string;
+    date: string;
+    crowdpercent:string; 
 }

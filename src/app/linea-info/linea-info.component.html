@@ -1,24 +1,60 @@
+<div class="row">
 
+    <div class="container col-lg-5">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    {{estaciones[0].data[0].way}}
 
-<div class="container my-4">
-    <div class="card">
-        <div class="card-header" ><h5>{{respuesta.name}}
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
 
-        </h5></div>
-        <div class="card-body">
-            <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let estacion of estaciones">
+                        <h4>{{estacion.name}}</h4>
+                        <div class="progress" style="height: 25px;">
+                            <div *ngIf="estacion.data[0].crowdPercent*100==0" class="progress-bar" [ngStyle]="{width: 100+'%'}">Niveles muy bajos de conglomeracion</div>
+                            <div *ngIf="estacion.data[0].crowdPercent*100>=0 && estacion.data[0].crowdPercent*100<=33" class="progress-bar bg-success"
+                                [ngStyle]="{width: estacion.data[0].crowdPercent*100+'%'}">Niveles moderados de conglomeracion</div>
+                            <div *ngIf="estacion.data[0].crowdPercent*100>33 && estacion.data[0].crowdPercent*100<=66" class="progress-bar bg-warning"
+                                [ngStyle]="{width:estacion.data[0].crowdPercent*100+'%'}">Niveles altos de conglomeracion </div>
+                            <div *ngIf="estacion.data[0].crowdPercent*100>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.data[0].crowdPercent*100+'%'}">Niveles muy altos de conglomeracion</div>
 
-                <li class="list-group-item" *ngFor="let estacion of respuesta.stations">
-                    <h4>{{estacion.name}}</h4>
-                    <div class="progress" style="height: 25px;">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-                        <div class="progress-bar bg-danger" [ngStyle]="{width:60+'%'}">60%</div>
-                        <!--div *ngIf="estacion.crowd>=0 && estacion.crowd<=33" class="progress-bar bg-success" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
-                        <div *ngIf="estacion.crowd>33 && estacion.crowd<=66" class="progress-bar bg-warning" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div>
-                        <div *ngIf="estacion.crowd>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.crowd+'%'}">{{estacion.crowd}}%</div-->
-                    </div>
-                </li>
-            </ul>
+    <div class="container col-lg-5">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                <h5>
+                    {{estaciones[1].data[1].way}}
+
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+
+                    <li class="list-group-item" *ngFor="let estacion of estaciones">
+                        <h4>{{estacion.name}}</h4>
+                        <div class="progress" style="height: 25px;">
+                            <div *ngIf="estacion.data[1].crowdPercent*100==0" class="progress-bar" [ngStyle]="{width: 100+'%'}">Niveles muy bajos de conglomeracion</div>
+                            <div *ngIf="estacion.data[1].crowdPercent*100>=0 && estacion.data[1].crowdPercent*100<=33" class="progress-bar bg-success"
+                                [ngStyle]="{width: estacion.data[1].crowdPercent*100+'%'}">Niveles moderados de conglomeracion</div>
+                            <div *ngIf="estacion.data[1].crowdPercent*100>33 && estacion.data[1].crowdPercent*100<=66" class="progress-bar bg-warning"
+                                [ngStyle]="{width:estacion.data[1].crowdPercent*100+'%'}">Niveles altos de conglomeracion </div>
+                            <div *ngIf="estacion.data[1].crowdPercent*100>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.data[1].crowdPercent*100+'%'}">Niveles muy altos de conglomeracion</div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

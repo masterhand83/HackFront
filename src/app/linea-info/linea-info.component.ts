@@ -18,7 +18,7 @@ export class LineaInfoComponent implements OnInit {
   
   id:string;
 
-  respuesta:Linea[];
+  estaciones:Linea[];
 
   ngOnInit() {
 
@@ -26,8 +26,8 @@ export class LineaInfoComponent implements OnInit {
     this.id= this.activatedRouted.snapshot.paramMap.get('id');
     this.$linea = this.lineaService.getLinea(this.id);
     this.$linea.subscribe(res =>{
-      this.respuesta=res as Linea[];
-      console.log(this.respuesta);
+      this.estaciones=res as Linea[];
+      console.log(this.estaciones);
     })
     
     //console.log(this.linea);
