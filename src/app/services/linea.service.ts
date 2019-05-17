@@ -3,15 +3,15 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Estacion } from 'src/models/Estacion';
 import { Linea } from 'src/models/Linea';
-import { Socket } from 'ngx-socket-io';
+import { Socket, SocketIoConfig } from 'ngx-socket-io';
 @Injectable({
   providedIn: 'root'
 })
 export class LineaService {
+  //Esto recibe la informacion de la linea.
+  linea = this.socket.fromEvent('recieve-linea');
 
-  linea:Linea[];
-  constructor(private http: HttpClient) { }
-  getLinea(_id:string): Observable<Linea>{
-    return this.http.get<Linea>(`http://${location.hostname}:3000/lines/line/${_id}`);
-  }
+  constructor(private http: HttpClient, private socket: Socket) { }
+
+
 }
