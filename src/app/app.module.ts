@@ -10,13 +10,15 @@ import { FormsModule } from "@angular/forms";
 import { LineaService } from './services/linea.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
+import { CrowdPipe } from './crowd.pipe';
 const config: SocketIoConfig = {url: `http://${location.hostname}:3000`, options: {}};
 @NgModule({
   declarations: [
     AppComponent,
     StartComponent,
     LineaInfoComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CrowdPipe
   ],
   imports: [
     BrowserModule,

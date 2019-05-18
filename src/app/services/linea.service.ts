@@ -9,9 +9,19 @@ import { Socket, SocketIoConfig } from 'ngx-socket-io';
 })
 export class LineaService {
   //Esto recibe la informacion de la linea.
-  linea = this.socket.fromEvent('recieve-linea');
+  view = this.socket.fromEvent('update-view');
+  linea: Observable<any[]> = new Observable();
 
   constructor(private http: HttpClient, private socket: Socket) { }
+  joinRoom(id){
+    this.socket.emit('join-room',id);
+  }
+  leaveRoom(id){
+    this.socket.emit('leave-room',id);
+  }
+  getLinea(idlinea: string): void{
+    this.linea = this.http.get<any[]>(`http://${location.hostname}:3000/lines/line/${idlinea}`);
+  }
 
 
 }

@@ -1,67 +1,59 @@
-<div class="row">
-
-  <div class="container col-lg-5">
-    <br>
-    <div class="card">
-      <div class="card-header">
-        <h5>
-          {{estaciones[0].data[0].way}}
-        </h5>
-      </div>
-      <div class="card-body">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6 col-md-8">
+      <div *ngIf="(lineaService.linea |async) as estaciones; else loading;"
+      style="overflow-y: auto; max-height: 50vh;" class="shadow-sm">
         <ul class="list-group">
+          <li *ngFor="let estacion of estaciones; index as i;"
+            class="list-group-item list-group-item-action"
+            (click)="openLinea(estacion, i)"
+            [ngClass]="{'active':estacion.name == current_estacion.name}">
 
-          <li class="list-group-item" *ngFor="let estacion of estaciones">
-            <h4>{{estacion.name}}</h4>
-            <div class="progress" style="height: 25px;">
-              <div *ngIf="estacion.data[0].crowdPercent*100==0" class="progress-bar" [ngStyle]="{width: 100+'%'}">
-                Niveles muy bajos de conglomeracion</div>
-              <div *ngIf="estacion.data[0].crowdPercent*100>=0 && estacion.data[0].crowdPercent*100<=33"
-                class="progress-bar bg-success" [ngStyle]="{width: estacion.data[0].crowdPercent*100+'%'}">Niveles
-                moderados de conglomeracion</div>
-              <div *ngIf="estacion.data[0].crowdPercent*100>33 && estacion.data[0].crowdPercent*100<=66"
-                class="progress-bar bg-warning" [ngStyle]="{width:estacion.data[0].crowdPercent*100+'%'}">Niveles altos
-                de conglomeracion </div>
-              <div *ngIf="estacion.data[0].crowdPercent*100>66" class="progress-bar bg-danger"
-                [ngStyle]="{width: estacion.data[0].crowdPercent*100+'%'}">Niveles muy altos de conglomeracion</div>
-
-            </div>
+            {{estacion.name}}
+            <i class='fa fa-user-astronaut' *ngIf="estacion.name == 'Popotla'">
+            </i>
           </li>
         </ul>
       </div>
+
     </div>
-  </div>
+    <div class="col-lg-6 col-md-4">
 
-  <div class="container col-lg-5">
-    <br>
-    <div class="card">
-      <div class="card-header">
-        <h5>
-          {{estaciones[1].data[1].way}}
-
-        </h5>
-      </div>
-      <div class="card-body">
-        <ul class="list-group">
-
-          <li class="list-group-item" *ngFor="let estacion of estaciones">
-            <h4>{{estacion.name}}</h4>
-            <div class="progress" style="height: 25px;">
-              <div *ngIf="estacion.data[1].crowdPercent*100==0" class="progress-bar" [ngStyle]="{width: 100+'%'}">
-                Niveles muy bajos de conglomeracion</div>
-              <div *ngIf="estacion.data[1].crowdPercent*100>=0 && estacion.data[1].crowdPercent*100<=33"
-                class="progress-bar bg-success" [ngStyle]="{width: estacion.data[1].crowdPercent*100+'%'}">Niveles
-                moderados de conglomeracion</div>
-              <div *ngIf="estacion.data[1].crowdPercent*100>33 && estacion.data[1].crowdPercent*100<=66"
-                class="progress-bar bg-warning" [ngStyle]="{width:estacion.data[1].crowdPercent*100+'%'}">Niveles altos
-                de conglomeracion </div>
-              <div *ngIf="estacion.data[1].crowdPercent*100>66" class="progress-bar bg-danger"
-                [ngStyle]="{width: estacion.data[1].crowdPercent*100+'%'}">Niveles muy altos de conglomeracion</div>
-
+      <div class="card shadow-sm">
+        <h4 class="card-header bg-info text-light">{{current_estacion.name}}</h4>
+        <div class="card-body">
+          <h6>Direccion: {{current_estacion.data[0].way}}</h6>
+          <div class="progress" style="height: 30px;">
+            <div class="progress-bar"
+            [ngStyle]="{
+              'width':parsePercent(current_estacion.data[0]),
+              'background-color': getColor(current_estacion.data[0]),
+              'color': 'black'
+            }">
+              {{current_estacion.data[0].crowdPercent | crowd}}
             </div>
-          </li>
-        </ul>
+          </div>
+          <hr>
+          <h6>
+            Direccion: {{current_estacion.data[1].way}}
+          </h6>
+          <div class="progress" style="height: 30px;">
+            <div class="progress-bar"
+            [ngStyle]="{
+              'width':parsePercent(current_estacion.data[1]),
+              'background-color': getColor(current_estacion.data[1]),
+              'color': 'black'
+            }">{{current_estacion.data[1].crowdPercent | crowd}}</div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
+
+<ng-template class="text-info" #loading>
+  <div class="card" style="height: 50vh;">
+    <h3>Cargando estaciones ...</h3>
+  </div>
+</ng-template>
