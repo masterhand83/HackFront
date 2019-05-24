@@ -25,7 +25,8 @@ export class LineaInfoComponent implements OnInit, OnDestroy {
     //console.log(this.linea);
     this.lineaService.joinRoom(this.id);
     this.lineaService.view.subscribe(res => {
-      this.lineaService.getLinea(this.id);
+       this.lineaService.getLinea(this.id);
+       
     })
 
     this.current_estacion = {
