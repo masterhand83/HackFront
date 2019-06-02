@@ -1,61 +1,73 @@
-<div class="row" *ngIf="(lineaService.linea |async) as estaciones;"
->
+<div style="font-size: 1.8vw" class="row" *ngIf="(lineaService.linea |async) as estaciones;">
 
-  <div class="container col-lg-5 col-sm-5 col-md-5 col-xs-5">
-      <br>
-      <div class="card">
-          <div class="card-header">
-              <h5>
-                  {{estaciones[0].data[0].way}}
+    <div class="container col-lg-5 col-sm-5 col-md-5 col-xs-5">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                
+                    {{estaciones[0].data[0].way}}
 
-              </h5>
-          </div>
-          <div class="card-body">
-              <ul class="list-group">
+                
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
 
-                  <li class="list-group-item" *ngFor="let estacion of estaciones">
-                      <h4>{{estacion.name}}</h4>
-                      <div class="progress" style="height: 25px;">
-                          <div *ngIf="estacion.data[0].crowdPercent*100==0" class="progress-bar" [ngStyle]="{width: 100+'%'}">Muy bajo</div>
-                          <div *ngIf="estacion.data[0].crowdPercent*100>=0 && estacion.data[0].crowdPercent*100<=33" class="progress-bar bg-success"
-                              [ngStyle]="{width: estacion.data[0].crowdPercent*100+'%'}">Moderado</div>
-                          <div *ngIf="estacion.data[0].crowdPercent*100>33 && estacion.data[0].crowdPercent*100<=66" class="progress-bar bg-warning"
-                              [ngStyle]="{width:estacion.data[0].crowdPercent*100+'%'}">Alto </div>
-                          <div *ngIf="estacion.data[0].crowdPercent*100>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.data[0].crowdPercent*100+'%'}">Saturado</div>
+                    <li class="list-group-item" *ngFor="let estacion of estaciones">
 
-                      </div>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
+                        <div class="container" >
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    {{estacion.name}}
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <span *ngIf="estacion.data[0].crowdPercent*100==0" class="badge badge-success">Muy bajo</span>
+                                    <span *ngIf="estacion.data[0].crowdPercent*100>0 && estacion.data[0].crowdPercent*100<=33" class="badge badge-warning">Moderado</span>
+                                    <span *ngIf="estacion.data[0].crowdPercent*100>33 && estacion.data[0].crowdPercent*100<=66" class="badge" style="color:white; background-color:#FF7633;">Muy alto</span>
+                                    <span *ngIf="estacion.data[0].crowdPercent*100>66" class="badge badge-danger">Saturado</span>
 
-  <div class="container col-lg-5 col-sm-5 col-md-5 col-xs-5">
-      <br>
-      <div class="card">
-          <div class="card-header">
-              <h5>
-                  {{estaciones[1].data[1].way}}
+                                </div>
 
-              </h5>
-          </div>
-          <div class="card-body">
-              <ul class="list-group">
+                            </div>
+                        </div>
 
-                  <li class="list-group-item" *ngFor="let estacion of estaciones">
-                      <h4>{{estacion.name}}</h4>
-                      <div class="progress" style="height: 25px;">
-                          <div *ngIf="estacion.data[1].crowdPercent*100==0" class="progress-bar" [ngStyle]="{width: 100+'%'}">Muy bajo</div>
-                          <div *ngIf="estacion.data[1].crowdPercent*100>=0 && estacion.data[1].crowdPercent*100<=33" class="progress-bar bg-success"
-                              [ngStyle]="{width: estacion.data[1].crowdPercent*100+'%'}">Moderado</div>
-                          <div *ngIf="estacion.data[1].crowdPercent*100>33 && estacion.data[1].crowdPercent*100<=66" class="progress-bar bg-warning"
-                              [ngStyle]="{width:estacion.data[1].crowdPercent*100+'%'}">Alto </div>
-                          <div *ngIf="estacion.data[1].crowdPercent*100>66" class="progress-bar bg-danger" [ngStyle]="{width: estacion.data[1].crowdPercent*100+'%'}">Saturado</div>
 
-                      </div>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-5 col-sm-5 col-md-5 col-xs-5">
+        <br>
+        <div class="card">
+            <div class="card-header">
+                
+                    {{estaciones[1].data[1].way}}
+
+                
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+
+                    <li class="list-group-item" *ngFor="let estacion of estaciones">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                    {{estacion.name}}
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <span *ngIf="estacion.data[1].crowdPercent*100==0" class="badge badge-success">Muy bajo</span>
+                                    <span *ngIf="estacion.data[1].crowdPercent*100>0 && estacion.data[1].crowdPercent*100<=33" class="badge badge-warning">Moderado</span>
+                                    <span *ngIf="estacion.data[1].crowdPercent*100>33 && estacion.data[1].crowdPercent*100<=66" class="badge" style="color:white; background-color:#FF7633 ">Muy alto</span>
+                                    <span *ngIf="estacion.data[1].crowdPercent*100>66" class="badge badge-danger">Saturado</span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
