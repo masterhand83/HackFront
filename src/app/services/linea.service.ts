@@ -19,8 +19,10 @@ export class LineaService {
   leaveRoom(id: string){
     this.socket.emit('leave-room',id);
   }
-  getLinea(idlinea: string): void{
-    this.linea = this.http.get<any[]>(`http://${location.hostname}:3000/lines/line/${idlinea}`);
+
+
+  getLinea(idlinea: string){
+    return this.http.get<any[]>(`http://${location.hostname}:3000/lines/line/${idlinea}`);
   }
 
 

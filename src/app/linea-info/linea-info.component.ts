@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Estacion } from 'src/models/Estacion';
 import { Linea } from 'src/models/Linea';
 import { Router, ActivatedRoute } from '@angular/router';
+import { injectAttributeImpl } from '@angular/core/src/render3/di';
 
 declare var $: any;
 @Component({
@@ -12,7 +13,7 @@ declare var $: any;
   styleUrls: ['./linea-info.component.css']
 })
 export class LineaInfoComponent implements OnInit, OnDestroy {
-  $linea: Observable<any>;
+  linea: any[];
   constructor(public lineaService: LineaService, private router:Router,private activatedRouted:ActivatedRoute) { }
 
 
@@ -20,13 +21,21 @@ export class LineaInfoComponent implements OnInit, OnDestroy {
   current_estacion;
   ngOnInit() {
     this.id= this.activatedRouted.snapshot.paramMap.get('id');
-    this.lineaService.getLinea(this.id);
-    this.$linea = this.lineaService.linea;
-    //console.log(this.linea);
+    //se llama a esta funcion para que el usuario pueda ver los datos cuando
+    //entra por primera vez
+    this.getLinea();
+
+    //El usuario se une al cuarto relacionado con la linea.
     this.lineaService.joinRoom(this.id);
-    this.lineaService.view.subscribe(res => {
-      console.log("Updating view")
-      this.lineaService.getLinea(this.id);
+
+    /*En esta parte de el codigo nos suscribimos a un evento que envia una esta-
+    cion en especifico. Al recibir el mensaje, se busca la estación que co-
+    incida con la estacion actualizada y se reemplaza por la misma*/
+    this.lineaService.view.subscribe((data: any) => {
+      let mapeo = this.linea.map(item => item.name);
+      console.log(data);
+      let index = mapeo.indexOf(data.name);
+      this.linea[index] = data;
     })
 
 
@@ -35,10 +44,13 @@ export class LineaInfoComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.lineaService.leaveRoom(this.id);
   }
-  openLinea(linea,index: number){
-    //console.log(linea);
-    this.current_estacion = linea;
+  getLinea(){
+    this.lineaService.getLinea(this.id).subscribe(res => {
+      console.log(res)
+      this.linea = res;
+    });
   }
+  //hago las funciones y nadie las usa -_-
   parsePercent(value){
     return (value.crowdPercent *100)+'%';
   }

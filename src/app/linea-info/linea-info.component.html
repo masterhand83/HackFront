@@ -1,18 +1,18 @@
-<div class="row" *ngIf="(lineaService.linea |async) as estaciones;">
+<div class="row" *ngIf="linea">
 
     <div class="container col-lg-5 col-sm-5 col-md-5 col-xs-5">
         <br>
         <div class="card">
             <div class="card-header">
 
-                {{estaciones[0].data[0].way}}
+                {{linea[0].data[0].way}}
 
 
             </div>
             <div class="card-body">
                 <ul class="list-group">
 
-                    <li class="list-group-item" *ngFor="let estacion of estaciones">
+                    <li class="list-group-item" *ngFor="let estacion of linea">
                         <div>
                             <div class="d-inline-block">
                                 {{estacion.name}}
@@ -41,14 +41,14 @@
         <div class="card">
             <div class="card-header">
 
-                {{estaciones[1].data[1].way}}
+                {{linea[1].data[1].way}}
 
 
             </div>
             <div class="card-body">
                 <ul class="list-group">
 
-                    <li class="list-group-item" *ngFor="let estacion of estaciones">
+                    <li class="list-group-item" *ngFor="let estacion of linea">
                         <div>
                             <div class="d-inline-block">
                                 {{estacion.name}}
