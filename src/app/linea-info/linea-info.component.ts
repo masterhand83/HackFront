@@ -26,17 +26,9 @@ export class LineaInfoComponent implements OnInit, OnDestroy {
     this.lineaService.joinRoom(this.id);
     this.lineaService.view.subscribe(res => {
        this.lineaService.getLinea(this.id);
-       
     })
 
-    this.current_estacion = {
-      name: 'Por favor, seleccione una estación.',
-      idLine: 2,
-      data: [
-        { way: 'Estacion 1', date: '2019-05-17T22:21:48.850Z', crowdPercent: .24},
-        { way: 'Estacion 2', date: '2019-05-17T22:21:48.850Z', crowdPercent: .50 }
-      ]
-    }
+
 
   }
   ngOnDestroy(){

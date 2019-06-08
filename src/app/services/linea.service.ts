@@ -13,10 +13,10 @@ export class LineaService {
   linea: Observable<any[]> = new Observable();
 
   constructor(private http: HttpClient, private socket: Socket) { }
-  joinRoom(id){
+  joinRoom(id: string){
     this.socket.emit('join-room',id);
   }
-  leaveRoom(id){
+  leaveRoom(id: string){
     this.socket.emit('leave-room',id);
   }
   getLinea(idlinea: string): void{
