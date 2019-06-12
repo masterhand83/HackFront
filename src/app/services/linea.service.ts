@@ -25,5 +25,10 @@ export class LineaService {
     return this.http.get<any[]>(`http://${location.hostname}:3000/lines/line/${idlinea}`);
   }
 
+  //Por lo mietras pondre la ruta del twitter aqui
+  getTweet(){
+    return this.http.get(`http://${location.hostname}:3000/twitter/tweets`);
+  }
+
 
 }
